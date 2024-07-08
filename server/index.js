@@ -1,21 +1,21 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
-// const axios = require('axios');
-// const dotenv = require('dotenv');
-// const cors = require('cors');
-// const PDFDocument = require('pdfkit');
-// const OpenAI = require('openai');
-// const fs = require('fs');
-// const path = require('path');
-// const multer = require('multer');
+const bodyParser = require('body-parser');
+const axios = require('axios');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const PDFDocument = require('pdfkit');
+const OpenAI = require('openai');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
 
 const app = express();
 const port = 4000;
 
 // Start the server and print the URL
 app.listen(port, () => {
-  console.log(`API listening on PORT ${port} `)
-})
+  console.log(`Server running at http://localhost:${port}`);
+});
 
 // app.use(cors());
 // app.use(bodyParser.json());
