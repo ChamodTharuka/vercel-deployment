@@ -14,8 +14,8 @@ const port = 4000;
 
 // Start the server and print the URL
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+  console.log(`API listening on PORT ${port} `)
+})
 
 // app.use(cors());
 // app.use(bodyParser.json());
