@@ -303,11 +303,17 @@ app.post('/api/describe-image', upload.single('image'), async (req, res) => {
   }
 });
 
+app.get('/test', (req, res) => {
+  const message = `Server running test at http://localhost:${port}`;
+  res.send(message);
+});
+
 // Root URL handler
 app.get('/', (req, res) => {
   const message = `Server running at http://localhost:${port}`;
   res.send(message);
 });
+
 
 // Start the server and print the URL
 const server = app.listen(port, () => {
