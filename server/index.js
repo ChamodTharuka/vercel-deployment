@@ -12,7 +12,7 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
-// Start the server and print the URL
+// Start the server and print the URLs
 app.listen(port, () => {
   console.log(`API listening on PORT ${port} `)
 })
