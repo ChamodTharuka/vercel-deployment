@@ -12,9 +12,14 @@ const multer = require('multer');
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.use(cors());
-app.use(bodyParser.json());
-dotenv.config();
+// Start the server and print the URL
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+// app.use(cors());
+// app.use(bodyParser.json());
+// dotenv.config();
 
 // const apiKey = process.env.API_KEY;
 // const openai = new OpenAI({ apiKey });
@@ -303,6 +308,7 @@ dotenv.config();
 //   }
 // });
 
+
 app.get('/test', (req, res) => {
   const message = `Server running test at http://localhost:${port}`;
   res.send(message);
@@ -312,12 +318,6 @@ app.get('/test', (req, res) => {
 app.get('/', (req, res) => {
   const message = `Server running at http://localhost:${port}`;
   res.send(message);
-});
-
-
-// Start the server and print the URL
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
 });
 
 // Export the Express API
