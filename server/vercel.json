@@ -11,14 +11,5 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-ABC", "value": "test" }
-        
-      ]
-    }
   ]
 }
