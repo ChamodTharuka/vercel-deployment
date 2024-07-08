@@ -316,12 +316,9 @@ app.get('/', (req, res) => {
 
 
 // Start the server and print the URL
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
-  console.log(`APIs are available at http://localhost:${port}/api/chat, http://localhost:${port}/api/pdf, http://localhost:${port}/api/regenerate-story, http://localhost:${port}/api/regenerate-image, http://localhost:${port}/api/describe-image`);
 });
 
-// Add an alert when the server successfully starts
-server.on('listening', () => {
-  console.log('Server is now running...');
-});
+// Export the Express API
+module.exports = app
