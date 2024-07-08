@@ -287,7 +287,7 @@ const describeImage = async (imageFilePath) => {
 
 app.post('/api/describe-image', upload.single('image'), async (req, res) => {
   if (!req.file) {
-    return res.status(400).json({ error: 'No file uploaded' });
+    return res.status(400).json({ error: 'No image uploaded' });
   }
 
   const imageFilePath = req.file.path;
@@ -296,14 +296,26 @@ app.post('/api/describe-image', upload.single('image'), async (req, res) => {
     const description = await describeImage(imageFilePath);
     res.json({ description });
   } catch (error) {
-    console.error('Error in /api/describe-image:', error);
-    res.status(500).json({ error: 'Error fetching image description' });
+    console.error('Error in describe-image:', error.message || error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  } finally {
+    fs.unlinkSync(imageFilePath); // Delete the temporary image file
   }
 });
 
+// Root URL handler
+app.get('/', (req, res) => {
+  const message = `Server running at http://localhost:${port}`;
+  res.send(message);
+});
 
+// Start the server and print the URL
+const server = app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+  console.log(`APIs are available at http://localhost:${port}/api/chat, http://localhost:${port}/api/pdf, http://localhost:${port}/api/regenerate-story, http://localhost:${port}/api/regenerate-image, http://localhost:${port}/api/describe-image`);
+});
 
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Add an alert when the server successfully starts
+server.on('listening', () => {
+  console.log('Server is now running...');
 });
